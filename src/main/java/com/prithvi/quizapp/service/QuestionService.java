@@ -29,12 +29,19 @@ public class QuestionService {
     }
 
 
-    public List<Question> getAllQuestionsByCategory(String category) {
-        return questionDao.findByCategory(category);
+    public ResponseEntity<List<Question>> getAllQuestionsByCategory(String category) {
+        try {
+            List<Question> questions =  questionDao.findByCategory(category);
+            return new ResponseEntity<>(questions, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
     }
 
-    public String addQuestion(Question question) {
-        questionDao.save(question);
-        return "Success";
+    public ResponseEntity<String> addQuestion(Question question) {
+            questionDao.save(question);
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 }
