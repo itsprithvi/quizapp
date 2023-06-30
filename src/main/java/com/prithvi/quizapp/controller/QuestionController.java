@@ -1,6 +1,6 @@
 package com.prithvi.quizapp.controller;
 
-import com.prithvi.quizapp.Question;
+import com.prithvi.quizapp.model.Question;
 import com.prithvi.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
